@@ -1,0 +1,23 @@
+
+<div class='two_third'>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th># Lists</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <% @collection.each do |profession| %>
+      <tr>
+        <td><%= link_to profession.name, profession_lists_url( profession) %></td>
+        <td><%= current_user.lists.for_profession(profession).count %></td>
+        <td><%= link_to "Delete", profession_url(profession), :method => :delete %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>
+<div class='one_third last'>
+  <%= link_to "New Profession", new_profession_url %>  
+</div>

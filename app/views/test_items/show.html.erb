@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>String:</b>
+  <%= @test_item.string %>
+</p>
+
+<p>
+  <b>Integer:</b>
+  <%= @test_item.integer %>
+</p>
+
+
+<%= link_to 'Edit', edit_test_item_path(@test_item) %> |
+<%= link_to 'Back', test_items_path %>

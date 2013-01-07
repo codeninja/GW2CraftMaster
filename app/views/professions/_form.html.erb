@@ -1,0 +1,10 @@
+<%= errors_for(@object, "Opps, unable to add new profession").html_safe %>
+
+<h2>Enter information for this profession</h2>
+<div class="one_quarter">
+  <%= f.label "Name" %>
+  <%=  f.text_field :name, :class=> "onehundred"%>
+</div>
+<div class="one_full">
+  <%= f.submit "Save", :class => "button green"%>
+</div>

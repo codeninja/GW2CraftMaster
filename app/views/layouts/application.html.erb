@@ -6,9 +6,37 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='blueish' id='top'>
+  
+  <section class='boxed'>
+    <section id="main">
+     <div id='logo'>
+        GW2 Craft Master
+        <!-- <small>A simple tool for making gold in Guild Wars 2</small> -->
+      </div>
+      <nav id='primary'>
+        <ul>
+          <li><%= link_to "Professions", professions_url %></li>
+          <li><%= link_to "Lists", lists_url %></li>
+        </ul>
+      </nav>
 
-<%= yield %>
+        <hr>
+        <% if notice %>
+          <div class='one_full'><p class="notice"><%= notice %></p></div>
+        <% end %>
 
+        <% if alert %>
+          <div class='one_full'><p class="alert"><%= alert %></p></div>
+        <% end %>
+
+        <%= yield %>        
+    
+
+
+      
+    </section>
+  </section>
+  
 </body>
 </html>

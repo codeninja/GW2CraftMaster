@@ -1,0 +1,37 @@
+<div class="two_third">
+  <h1>All lists for <%= @profession.name %></h1>
+</div>
+
+<div class="one_third last">
+  <%= link_to "New List", new_profession_list_url(@profession) %>
+</div>
+<div class='one_full'>
+  
+  <% @collection.each do |list| %>
+  <h2><%= list.name %></h2>
+  <table>
+    <thead>
+      <tr>
+        <th colspan=2>Items</th>
+        <th>Cost</th>
+        <th>Sale</th>
+        <th>Profit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <input type="checkbox" value="" checked> Checked<br> </td>
+        <td>Ravaging Profitable Chestpiece of Flame!</td>
+        <td> 28g 18s 12c</td>
+        <td> 42g 25s 18c </td>
+        <td> 9g 59s 2c</td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
+
+  <% if @collection.empty? %>
+  <h2>There are no lists for this profession</h2>
+  <% end %>
+  
+</div>

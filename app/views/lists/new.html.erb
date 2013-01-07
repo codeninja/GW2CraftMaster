@@ -1,0 +1,12 @@
+<div class='one_full'>
+  <h2>Create a new list</h2>
+  <%= form_for @object, :url => profession_lists_url(:profession => @profession) do |f| %>
+  <div class='one_quarter'>
+    <%= f.label :name %>
+    <%= f.text_field  :name %>
+  </div>
+  <div class='one_full'>
+    <%= f.submit "Save", :class => " button green" %>
+  </div>
+  <% end %>
+</div>
