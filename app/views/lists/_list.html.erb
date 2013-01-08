@@ -1,0 +1,32 @@
+<section id="<%= dom_id(list) %>" class='list'>
+    <h4><%= list.name %></h4>            
+  <div class='clear'></div>
+  <%= form_for Item.new(:list_id => list.id), :url => profession_list_items_url(@profession, list) do |f| %>
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" value=""></th>
+          <th>Item</th>
+          <th>Cost</th>
+          <th>Sale</th>
+          <th>Profit</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+      
+        <%= render :partial => 'item', :collection => list.items %>
+         
+        <tr>
+          <td colspan=4>
+            <input type='text' size='120'>
+          </td>
+          <td>
+            <input type='submit' class='button green' value='Add Item'>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+  <hr>
+</section>  <!-- end list -->

@@ -10,16 +10,18 @@
   
   <section class='boxed'>
     <section id="main">
-     <div id='logo'>
-        GW2 Craft Master
-        <!-- <small>A simple tool for making gold in Guild Wars 2</small> -->
+      <div class='one_full'>
+        <div id='logo'>
+          GW2 Craft Master
+          <!-- <small>A simple tool for making gold in Guild Wars 2</small> -->
+        </div>
+        <nav id='primary'>
+          <ul>
+            <li><%= link_to "Professions", professions_url %></li>
+            <li><%= link_to "Lists", lists_url %></li>
+          </ul>
+        </nav>        
       </div>
-      <nav id='primary'>
-        <ul>
-          <li><%= link_to "Professions", professions_url %></li>
-          <li><%= link_to "Lists", lists_url %></li>
-        </ul>
-      </nav>
 
         <hr>
         <% if notice %>

@@ -1,11 +1,18 @@
 GW2CraftMaster::Application.routes.draw do
+
+
+  resources :recipes
+
+
   resources :test_items
 
 
 
 
   resources :professions do
-    resources :lists
+    resources :lists do
+      resources :items
+    end
   end
 
 

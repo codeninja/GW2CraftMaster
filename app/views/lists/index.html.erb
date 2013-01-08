@@ -1,38 +1,21 @@
 <div class="two_third">
-  <h1>All lists for <%= @profession.name %></h1>
+  <h2>All lists for <%= @profession.name %></h2>
 </div>
 
 <div class="one_third last">
   <%= link_to "New List", new_profession_list_url(@profession) %>
 </div>
-<div class='one_full'>
-  
-  <% @collection.each do |list| %>
-  <h2><%= list.name %></h2>
-  <table>
-    <thead>
-      <tr>
-        <th><input type="checkbox" value=""></th>
-        <th>Item</th>
-        <th>Cost</th>
-        <th>Sale</th>
-        <th>Profit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td> <input type="checkbox" value=""></td>
-        <td>Ravaging Profitable Chestpiece of Flame!</td>
-        <td> 28g 18s 12c</td>
-        <td> 42g 25s 18c </td>
-        <td> 9g 59s 2c</td>
-      </tr>
-    </tbody>
-  </table>
-  <% end %>
 
-  <% if @collection.empty? %>
-  <h2>There are no lists for this profession</h2>
-  <% end %>
+<hr>
+<div class='clear'>
   
 </div>
+  
+<section class='lists'>
+  <%= render :partial => 'list' , :collection => @collection%>
+  
+  <% if @collection.empty? %>
+  <h2>There are no lists for this profession</h2>
+  <% end %>  
+</section> <!-- end lists -->
+  
