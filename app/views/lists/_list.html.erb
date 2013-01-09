@@ -19,14 +19,13 @@
          
         <tr>
           <td colspan=4>
-            <input type='text' size='120'>
+            <%= f.text_field :url , :class => "blue" , :size => 120, :placeholder => "Enter a GW2Spidy.com URL to a recipe you want to add to this list"%>
           </td>
           <td>
-            <input type='submit' class='button green' value='Add Item'>
+            <%= f.submit "Add Item", :class => 'button green' %>
           </td>
         </tr>
       </tbody>
     </table>
   <% end %>
-  <hr>
 </section>  <!-- end list -->

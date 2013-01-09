@@ -9,4 +9,9 @@ class List < ActiveRecord::Base
   
   scope :for_profession, lambda{|profession| where(:profession_id => profession.id)}
   
+  
+  def refresh_items
+    items.map &:spider_spidy
+  end
+  
 end

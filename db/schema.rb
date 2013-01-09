@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108152715) do
+ActiveRecord::Schema.define(:version => 20130108205033) do
+
+  create_table "component_items", :force => true do |t|
+    t.integer  "component_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.float    "cost"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "components", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.integer  "recipe_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "url"
@@ -20,8 +37,10 @@ ActiveRecord::Schema.define(:version => 20130108152715) do
     t.float    "sale"
     t.float    "profit"
     t.integer  "list_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.integer  "listing_fee"
+    t.integer  "transaction_fee"
   end
 
   create_table "lists", :force => true do |t|

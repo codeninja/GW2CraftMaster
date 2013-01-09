@@ -26,9 +26,17 @@ module ApplicationHelper
   # assumes 1234.56
   def h_to_gold(amount = 0)
     amount = amount.to_f
-    g = (amount/100).floor
-    s = (amount - (g*100)).floor
-    c = ((amount - amount.floor)*100).floor
-    raw "#{g}<span class='gold'>g</span> #{s}<span class='silver'>s</span> #{c}<span class='copper'>c</span>"
+  
+    # calc
+    g = (amount/100).to_i
+    s = (amount - (g*100)).to_i
+    c = ((amount - amount.to_i)*100).to_i
+    
+    # format
+    g = g != 0 ? "#{g}<span class='gold'>g</span>" : ''
+    s = s != 0 ? "#{s}<span class='silver'>s</span>" : ""
+    c = c != 0 ? "#{c}<span class='copper'>c</span>" : ""
+    
+    raw "#{g} #{s} #{c}"
   end
 end

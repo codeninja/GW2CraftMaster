@@ -21,6 +21,8 @@ group :assets do
 end
 
 gem 'devise'
+gem 'mechanize'
+gem "hpricot"
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
