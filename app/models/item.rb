@@ -23,8 +23,8 @@ class Item < ActiveRecord::Base
     self.profit = clean_price(content.search('//th.recipe_summary_profit').first)
     
     shopping_list = JSON.parse(content.search("//script").innerHTML.match(/\{.+\}/).to_s)
-
-    # save!
+    self.tmp_response = shopping_list
+    save!
   end
   
   def clean_price(str)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108205033) do
+ActiveRecord::Schema.define(:version => 20130109225003) do
 
   create_table "component_items", :force => true do |t|
     t.integer  "component_id"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20130108205033) do
     t.datetime "updated_at",      :null => false
     t.integer  "listing_fee"
     t.integer  "transaction_fee"
+    t.text     "tmp_response"
   end
 
   create_table "lists", :force => true do |t|
