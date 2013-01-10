@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   
   before_filter :object , :only =>[ :show, :update ]
   before_filter :collection, :only => :index
-  before_filter :new_object, :only => :new
+  before_filter :create_new_object, :only => :new
   
   
   def site_index
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     self.controller_name.singularize.camelize.constantize
   end
   
-  def new_object(options={})
+  def create_new_object(options={})
     @object ||= object_name.new(options)
   end
   
