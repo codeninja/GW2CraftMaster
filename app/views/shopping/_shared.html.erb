@@ -1,0 +1,32 @@
+<h3><%= instruction.to_s.titleize %> These</h3>
+<table border="0">
+  <thead>
+    <tr>
+      <th width='30%'>Name</th>
+      <th class='center'>Inventory</th>
+      <th width='15%' class='center'>Needed</th>
+      <th width='15%' class='right'>Price Each</th>
+      <th width='15%' class='right'>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% components.sort_by{|c| c=c.last; c[:object].component.price * c[:needed]}.reverse.each do |id, component| %>
+      <tr>
+        <th><%= link_to raw( component[:object].component.name ), component[:object].component.url %></th>
+        <td class='center'><input type='text' name='inventory' class="onhand center" size=3 placeholder = "0"></td>
+        <td class='center bold needed' data-base="<%= component[:needed] %>"><%= component[:needed] %></td>
+        <td class='right'><%= h_to_gold(component[:object].component.price) %></td>
+        <% @subtotal[instruction]||=0  %>
+        <% @subtotal[instruction] += (component[:object].component.price * component[:needed])  %>
+        <td class='right'><%= h_to_gold(component[:object].component.price * component[:needed]) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  
+  <tfoot>
+    <tr>
+      <th class='right' colspan=4>Subtotal</th>
+      <th class='right'><%= h_to_gold(@subtotal[instruction]) %></th>
+    </tr>
+  </tfoot>
+</table>

@@ -59,6 +59,39 @@ jQuery.localScroll();
 $('pre').addClass('prettyprint linenums');
 
 // Uniform
-$("select, input:checkbox, input:radio, input:file").uniform();
+// , input:checkbox, input:radio, input:file
+$("select").uniform();
+
+$(".list_select_all").click(function(e){
+	boxes = $(this).parents("table").find("input.craft_selection_checkbox	")
+	boxes.prop('checked', $(this).prop("checked")).change()
+})
+
+$("input.craft_selection_checkbox").change(function(){
+	items_input = $("#selected_items")
+	values = $("input:checkbox:checked.craft_selection_checkbox").map(function(){return this.value}).get()
+	items_input.val(values)
 	
+})
+
+
+$("input.onhand").change(function(){
+	value = $(this).val();
+	need_cell = $(this).parent().siblings('.needed')
+	
+	if($.isNumeric(value)){
+		if(value >0){
+			need_cell.html(need_cell.data("base") - value)
+		}else{
+			need_cell.html( need_cell.data("base"))
+		}
+	}else{
+		$(this).val(0)
+		need_cell.html( need_cell.data("base"))		
+	}	
+})
+
+// 	END READY
 });
+
+

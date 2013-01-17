@@ -1,11 +1,10 @@
 <section id="<%= dom_id(list) %>" class='list'>
     <h4><%= list.name %></h4>            
   <div class='clear'></div>
-  <%= form_for Item.new(:list_id => list.id), :url => profession_list_items_url(@profession, list) do |f| %>
     <table>
       <thead>
         <tr>
-          <th><input type="checkbox" value=""></th>
+          <th><input type="checkbox" value="" id="<%= dom_id(list) %>_select_all" class='list_select_all' checked ></th>
           <th>Item</th>
           <th>Cost</th>
           <th>Sale</th>
@@ -15,17 +14,16 @@
       <tbody>
         
       
-        <%= render :partial => 'item', :collection => list.items %>
+        <%= render :partial => 'item', :collection => list.profitable_items %>
          
         <tr>
-          <td colspan=4>
-            <%= f.text_field :url , :class => "blue" , :size => 120, :placeholder => "Enter a GW2Spidy.com URL to a recipe you want to add to this list"%>
-          </td>
-          <td>
-            <%= f.submit "Add Item", :class => 'button green' %>
+          <td colspan=5>
+            <%= form_for Item.new(:list_id => list.id), :url => profession_list_items_url(@profession, list) do |f| %>
+              <%= f.text_field :url , :class => "blue" , :size => 120, :placeholder => "Enter a GW2Spidy.com URL to a recipe you want to add to this list"%>
+              <%= f.submit "Add Item", :class => 'button green' %>
+            <% end %>
           </td>
         </tr>
       </tbody>
     </table>
-  <% end %>
 </section>  <!-- end list -->

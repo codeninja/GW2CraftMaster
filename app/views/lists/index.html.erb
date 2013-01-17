@@ -3,7 +3,10 @@
 </div>
 
 <div class="one_third last">
-  <%= link_to "New List", new_profession_list_url(@profession) %>
+  <h2>
+    <%= link_to "New List", new_profession_list_url(@profession) %>
+    | <%= link_to "Craft All", craft_profession_lists_url(@profession) %>
+  </h2>
 </div>
 
 <hr>
@@ -12,8 +15,14 @@
 </div>
   
 <section class='lists'>
-  <%= render :partial => 'list' , :collection => @collection%>
-  
+    <%= render :partial => 'list' , :collection => @collection %>
+
+    <%= form_for :item, :id => "list_selection_form", :url => craft_selected_profession_lists_url(@profession) do |f| %>
+      <input type="hidden" name="items" id='selected_items' value="<%= @profession.profitable_items.map(&:id).join(",") %>"> 
+      <div>
+        <%= f.submit "Craft", :class=>"button green" %>
+      </div>
+    <% end %>
   <% if @collection.empty? %>
   <h2>There are no lists for this profession</h2>
   <% end %>  

@@ -1,12 +1,17 @@
-<div class='one_full'>
-  <h2>Create a new list</h2>
+  <div class="one_full">
+    <h2>Create a new list</h2>
+    
+  </div>
   <%= form_for @object, :url => profession_lists_url(:profession => @profession) do |f| %>
-  <div class='one_quarter'>
-    <%= f.label :name %>
+  <div class='one_third'>
+    <%= f.label :name %><br>
     <%= f.text_field  :name %>
+  </div>
+  <div class='two_third last'>
+    <%= f.label "Spider from Search" %>
+    <%= f.text_field  :search, :size => 100, :placeholder => "Enter GW2Spidy.com Search URL" %>
   </div>
   <div class='one_full'>
     <%= f.submit "Save", :class => " button green" %>
   </div>
   <% end %>
-</div>

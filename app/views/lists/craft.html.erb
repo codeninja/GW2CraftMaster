@@ -1,0 +1,21 @@
+
+<% @subtotal = {} %>
+<div class="two_third">
+  <h2>Crafting for <%= @profession.name %></h2>
+</div>
+<div class='one_third last'>
+  <%= yield :total %>
+</div>
+
+<div class='one_full' id='shopping_list_by_component'>
+  <% @shopping_list_by_component.each do |instruction,components| %>
+    <%= render :partial => "shopping/#{instruction}", :locals => {:components => components, :instruction => instruction} %>
+  <% end %>      
+</div>
+
+<% content_for :total do %>
+<h2>Total: <%= h_to_gold @subtotal.each_value.inject{|sum,x| sum+x} %></h2>
+<% end %>
+
+
+

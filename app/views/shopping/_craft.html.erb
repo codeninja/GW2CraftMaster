@@ -1,0 +1,57 @@
+<div class='one_full'>
+  
+  <div class='one_half'>
+    <h3><%= instruction.to_s.titleize %> These Components</h3>
+    <table border="0">
+      <thead>
+        <tr>
+          <th width='10%' class='center'>Needed</th>
+          <th width='50%'>Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% components.sort_by{|c| c = c.last; c[:needed].to_s+c[:object].component.name[1..5]}.reverse.each do |id, component| %>
+          <tr>
+            <td class='center'><%= component[:needed] %></td>
+            <td><%= link_to raw(component[:object].component.name), component[:object].component.url %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>  
+  </div>
+  <div class='one_half last'>
+    <h3>Craft these items</h3>
+    <table border="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Sale</th>
+          <th>Profit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.sort_by{|i| i.name}.each do |item| %>
+          <tr>
+            <td>
+              [<%= link_to "S", item.url %>]
+              <%= link_to raw(item.name), item.component.url %>
+            </td>
+            <td>
+              <%= h_to_gold item.sale %>
+            </td>
+            <td>
+              <%= h_to_gold item.profit %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan='2'>Total</th>
+          <th><%= h_to_gold @items.map(&:profit).sum() %></th>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+</div>

@@ -1,7 +1,8 @@
 <tr>
-  <td> <input type="checkbox" value=""></td>
-  <td> <%= item.name %></td>
+  <td> <input type="checkbox" name="items[]" class='craft_selection_checkbox' id="ckbox_for_<%= dom_id item %>" value="<%= item.id %>" checked></td>
+  <td> <%= link_to raw(item.name), item.component.url,:data_tooltip_href => item.component.url %></td>
   <td> <%= h_to_gold item.cost %></td>
   <td> <%= h_to_gold item.sale %> </td>
   <td> <%= h_to_gold item.profit %></td>
+  <td> <%= link_to "x", item_url(item), :method => :delete %></td>
 </tr>        

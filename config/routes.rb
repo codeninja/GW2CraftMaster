@@ -7,10 +7,14 @@ GW2CraftMaster::Application.routes.draw do
   resources :test_items
 
 
-
+  resources :items
 
   resources :professions do
-    resources :lists do
+    resources :lists  do
+      collection do 
+        get :craft
+        post :craft_selected
+      end
       resources :items
     end
   end
